@@ -84,6 +84,50 @@ import type {
 } from "contentful-rich-text-figma-renderer";
 ```
 
+## Contributing
+
+Contributions are welcome! Here's how to get started:
+
+1. Fork the repo and clone it locally
+2. Install dependencies: `npm install`
+3. Create a branch for your change: `git checkout -b my-feature`
+4. Make your changes and add tests for new functionality
+5. Run the full CI check: `npm run ci`
+6. Commit your changes and push to your fork
+7. Open a pull request
+
+### Development commands
+
+| Command              | Description                            |
+| -------------------- | -------------------------------------- |
+| `npm run build`      | Compile TypeScript to `dist/`          |
+| `npm run dev`        | Watch mode — recompiles on file change |
+| `npm run test`       | Run tests once                         |
+| `npm run test:watch` | Run tests in watch mode                |
+| `npm run format`     | Format code with Prettier              |
+| `npm run ci`         | Full check: build + format + tests     |
+
+### Changesets
+
+This project uses [Changesets](https://github.com/changesets/changesets) for versioning. If your PR introduces user-facing changes, add a changeset:
+
+```bash
+npx changeset
+```
+
+Follow the prompts to describe your change and select a semver bump level.
+
+### Guidelines
+
+- Keep the pure renderer (`renderer.ts`) free of Figma dependencies
+- Figma-specific code goes in `figma.ts` and is exported via the `./figma` subpath
+- All Figma API functions accept `figmaApi: PluginAPI` as the first parameter — no globals
+- Add tests for new renderer logic (Figma functions can't be unit tested without mocks)
+
+## Sponsorship
+
+If this package is useful to you, consider [sponsoring the project](https://github.com/sponsors/Khaledgarbaya). Your support helps keep it maintained and improved.
+
 ## License
 
 MIT

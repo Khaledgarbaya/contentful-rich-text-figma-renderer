@@ -1,0 +1,60 @@
+{
+  "name": "contentful-rich-text-figma-renderer",
+  "version": "0.0.1",
+  "description": "Convert Contentful Rich Text documents to formatted Figma nodes",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./figma": {
+      "import": "./dist/figma-entry.js",
+      "types": "./dist/figma-entry.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
+    "ci": "npm run build && npm run check-format && npm run test",
+    "prepublishOnly": "npm run ci",
+    "local-release": "changeset version && changeset publish"
+  },
+  "keywords": [
+    "contentful",
+    "figma",
+    "rich-text",
+    "renderer",
+    "plugin"
+  ],
+  "author": "Khaled Garbaya",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Khaledgarbaya/contentful-rich-text-figma-renderer.git"
+  },
+  "peerDependencies": {
+    "@figma/plugin-typings": ">=1.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@figma/plugin-typings": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.0",
+    "@figma/plugin-typings": "^1.100.0",
+    "prettier": "^3.4.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}
